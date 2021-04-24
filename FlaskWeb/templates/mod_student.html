@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1 style=" text-align:center">Modified Student </h1>
+</div>
+{% for row in rows %}
+<form class="form-horizontal" action="{{url_for('modrecore') }}" method="post">
+    <input type="hidden" value="{{row["ID"]}}" name="_ID" />
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="Name">ID:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="ID" id="ID" value="{{row['ID']}}" readonly>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="Name">Name:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="Name" id="Name" value="{{row['Name']}}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="email">Email:</label>
+        <div class="col-sm-10">
+            <input type="email" class="form-control" name="email" id="email" value="{{row['Email']}}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="dob">Date of Birth:</label>
+        <div class="col-sm-10">
+            <input type="date" class="form-control" name="dob" id="dob" value="{{row['DoB']}}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="Home Town">Home Town:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="home" id="home" value="{{row['Home']}}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="Score">Score:</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control" name="score" id="score" value="{{row['Score']}}" min="0" max="10" step="any" pattern="[+]?[0-9]*[.,]?[0-9]+">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">Submit</button>
+        </div>
+    </div>
+</form>
+ {% endfor %}
+{% endblock %}
